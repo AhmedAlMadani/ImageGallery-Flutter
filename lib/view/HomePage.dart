@@ -6,6 +6,15 @@ import 'package:google_fonts/google_fonts.dart';
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  Widget buildUploadButton() => FloatingActionButton(
+      backgroundColor: Colors.deepPurple[100],
+      child: const Icon(
+        Icons.add_a_photo,
+        color: Colors.black,
+      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      onPressed: () {});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +47,8 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: buildUploadButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
