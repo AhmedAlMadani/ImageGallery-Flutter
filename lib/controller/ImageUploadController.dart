@@ -4,7 +4,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 class ImageUploadController {
-  uploadController() async {
+  uploadImage() async {
     final results = await FilePicker.platform.pickFiles(
       allowMultiple: false,
       type: FileType.custom,
