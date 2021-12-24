@@ -14,12 +14,9 @@ class ImageUpload extends StatefulWidget {
 }
 
 class _ImageUploadState extends State<ImageUpload> {
-  // initializing some values
   File? _image;
   final imagePicker = ImagePicker();
   String? downloadURL;
-
-  // picking the image
 
   Future imagePickerMethod() async {
     final pick = await imagePicker.pickImage(source: ImageSource.gallery);
@@ -32,7 +29,6 @@ class _ImageUploadState extends State<ImageUpload> {
     });
   }
 
-  // uploading the image to firebase cloudstore
   Future uploadImage(File _image) async {
     final imgId = DateTime.now().millisecondsSinceEpoch.toString();
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
@@ -44,7 +40,6 @@ class _ImageUploadState extends State<ImageUpload> {
     await reference.putFile(_image);
     downloadURL = await reference.getDownloadURL();
 
-    // cloud firestore
     await firebaseFirestore
         .collection("users")
         .doc(widget.userId)
@@ -94,7 +89,6 @@ class _ImageUploadState extends State<ImageUpload> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                // the image that we wanted to upload
                                 Expanded(
                                     child: _image == null
                                         ? Center(
@@ -147,8 +141,6 @@ class _ImageUploadState extends State<ImageUpload> {
       ),
     );
   }
-
-  // show snack bar
 
   showSnackBar(String snackText, Duration d) {
     final snackBar = SnackBar(content: Text(snackText), duration: d);

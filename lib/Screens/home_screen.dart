@@ -117,6 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontWeight: FontWeight.bold,
                 )),
             backgroundColor: Colors.deepPurple[200],
+            foregroundColor: Colors.black,
             actions: [
               IconButton(
                   onPressed: () {
@@ -133,6 +134,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> logout(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => LoginScreen()));
+        MaterialPageRoute(builder: (context) => const LoginScreen()));
   }
 }
