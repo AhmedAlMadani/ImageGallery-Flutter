@@ -196,7 +196,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     MaterialPageRoute(builder: (context) => HomeScreen())),
               })
           .catchError((e) {
-        Fluttertoast.showToast(msg: e!.message);
+        Fluttertoast.showToast(msg: e!.message.toString());
       });
     }
   }

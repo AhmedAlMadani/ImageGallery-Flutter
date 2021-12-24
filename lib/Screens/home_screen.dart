@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 import 'login_screen.dart';
 import '../Controller/image_upload_controller.dart';
@@ -56,9 +55,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 20,
                   ),
                   Text("${loggedInUser.firstName} ${loggedInUser.secondName}",
-                      style: GoogleFonts.getFont('Sen',
-                          fontSize: 15, fontWeight: FontWeight.normal)),
-                  Text("${loggedInUser.email}",
                       style: GoogleFonts.getFont('Sen',
                           fontSize: 15, fontWeight: FontWeight.normal)),
                   const SizedBox(
