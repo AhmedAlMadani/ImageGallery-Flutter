@@ -17,14 +17,13 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
   final _auth = FirebaseAuth.instance;
 
-  // our form key
   final _formKey = GlobalKey<FormState>();
-  // editing Controller
-  final firstNameEditingController = TextEditingController();
-  final secondNameEditingController = TextEditingController();
-  final emailEditingController = TextEditingController();
-  final passwordEditingController = TextEditingController();
-  final confirmPasswordEditingController = TextEditingController();
+
+  final firstNameEditingController = new TextEditingController();
+  final secondNameEditingController = new TextEditingController();
+  final emailEditingController = new TextEditingController();
+  final passwordEditingController = new TextEditingController();
+  final confirmPasswordEditingController = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +32,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         controller: firstNameEditingController,
         keyboardType: TextInputType.name,
         validator: (value) {
-          RegExp regex = RegExp(r'^.{3,}$');
+          RegExp regex = new RegExp(r'^.{3,}$');
           if (value!.isEmpty) {
             return ("First Name cannot be Empty");
           }

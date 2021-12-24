@@ -44,8 +44,8 @@ class _ImageUploadState extends State<ImageUpload> {
         .collection("users")
         .doc(widget.userId)
         .collection("images")
-        .add({'downloadURL': downloadURL}).whenComplete(
-            () => showSnackBar("Image Uploaded", const Duration(seconds: 5)));
+        .add({'downloadURL': downloadURL}).whenComplete(() =>
+            showSnackBar("Image Upload Completed", const Duration(seconds: 5)));
   }
 
   @override
