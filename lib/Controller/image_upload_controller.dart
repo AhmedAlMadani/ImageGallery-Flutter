@@ -105,13 +105,17 @@ class _ImageUploadState extends State<ImageUpload> {
                                   },
                                   child: Text(
                                     "Select Image",
-                                    style: GoogleFonts.getFont('Sen',
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black),
+                                    style: GoogleFonts.getFont(
+                                      'Sen',
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.normal,
+                                      color: Colors.black,
+                                    ),
                                   ),
-                                  style: ElevatedButton.styleFrom(
-                                      primary: Colors.deepPurple[200]),
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                        Colors.deepPurple[200]),
+                                  ),
                                 ),
                                 ElevatedButton(
                                   onPressed: () {
@@ -124,13 +128,17 @@ class _ImageUploadState extends State<ImageUpload> {
                                   },
                                   child: Text(
                                     "Upload Image",
-                                    style: GoogleFonts.getFont('Sen',
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black),
+                                    style: GoogleFonts.getFont(
+                                      'Sen',
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.normal,
+                                      color: Colors.black,
+                                    ),
                                   ),
-                                  style: ElevatedButton.styleFrom(
-                                      primary: Colors.deepPurple[200]),
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                        Colors.deepPurple[200]),
+                                  ),
                                 ),
                               ],
                             ),

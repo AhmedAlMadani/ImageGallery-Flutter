@@ -55,30 +55,32 @@ class _LoginScreenState extends State<LoginScreen> {
 
     //password field
     final passwordField = TextFormField(
-        autofocus: false,
-        controller: passwordController,
-        obscureText: true,
-        validator: (value) {
-          RegExp regex = RegExp(r'^.{6,}$');
-          if (value!.isEmpty) {
-            return ("Password is required for login");
-          }
-          if (!regex.hasMatch(value)) {
-            return ("Enter Valid Password(Min. 6 Character)");
-          }
-        },
-        onSaved: (value) {
-          passwordController.text = value!;
-        },
-        textInputAction: TextInputAction.done,
-        decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.vpn_key),
-          contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Password",
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ));
+      autofocus: false,
+      controller: passwordController,
+      obscureText: true,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "Password is required for login";
+        }
+        if (value.length < 6) {
+          return "Password must be at least 6 characters long";
+        }
+        return null; // Return null for no validation errors
+      },
+      onSaved: (value) {
+        passwordController.text = value!;
+      },
+      textInputAction: TextInputAction.done,
+      decoration: InputDecoration(
+        prefixIcon: const Icon(Icons.vpn_key),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        hintText: "Password",
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+    );
 
     final loginButton = Material(
         elevation: 5,
@@ -186,18 +188,25 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   // login function
-  void signIn(String email, String password) async {
+  Future<void> signIn(String email, String password) async {
     if (_formKey.currentState!.validate()) {
-      await _auth
-          .signInWithEmailAndPassword(email: email, password: password)
-          .then((uid) => {
-                Fluttertoast.showToast(msg: "Login Successful"),
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const HomeScreen())),
-              })
-          .catchError((e) {
-        Fluttertoast.showToast(msg: e!.message.toString());
-      });
+      try {
+        final userCredential = await _auth.signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+
+        if (userCredential.user != null) {
+          Fluttertoast.showToast(msg: "Login Successful");
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (context) => const HomeScreen(),
+            ),
+          );
+        }
+      } catch (e) {
+        Fluttertoast.showToast(msg: e.toString());
+      }
     }
   }
 }

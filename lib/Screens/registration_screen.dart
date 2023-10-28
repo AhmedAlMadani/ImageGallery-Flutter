@@ -106,30 +106,33 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         ));
 
     final passwordField = TextFormField(
-        autofocus: false,
-        controller: passwordEditingController,
-        obscureText: true,
-        validator: (value) {
-          RegExp regex = RegExp(r'^.{6,}$');
-          if (value!.isEmpty) {
-            return ("Password is required for login");
-          }
-          if (!regex.hasMatch(value)) {
-            return ("Enter Valid Password(Min. 6 Character)");
-          }
-        },
-        onSaved: (value) {
-          firstNameEditingController.text = value!;
-        },
-        textInputAction: TextInputAction.next,
-        decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.vpn_key),
-          contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Password",
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ));
+      autofocus: false,
+      controller: passwordEditingController,
+      obscureText: true,
+      validator: (value) {
+        RegExp regex = RegExp(r'^.{6,}$');
+        if (value!.isEmpty) {
+          return "Password is required for login";
+        }
+        if (!regex.hasMatch(value)) {
+          return "Enter Valid Password (Min. 6 Characters)";
+        }
+        return null; // Return null for no validation errors
+      },
+      onSaved: (value) {
+        firstNameEditingController.text = value!;
+      },
+      textInputAction: TextInputAction.next,
+      decoration: InputDecoration(
+        prefixIcon: const Icon(Icons.vpn_key),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        hintText: "Password",
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+    );
 
     final confirmPasswordField = TextFormField(
         autofocus: false,
@@ -225,14 +228,19 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     );
   }
 
-  void signUp(String email, String password) async {
+  Future<void> signUp(String email, String password) async {
     if (_formKey.currentState!.validate()) {
-      await _auth
-          .createUserWithEmailAndPassword(email: email, password: password)
-          .then((value) => {postDetailsToFirestore()})
-          .catchError((e) {
-        Fluttertoast.showToast(msg: e!.message);
-      });
+      try {
+        final userCredential = await _auth.createUserWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+        if (userCredential.user != null) {
+          await postDetailsToFirestore();
+        }
+      } catch (e) {
+        Fluttertoast.showToast(msg: e.toString());
+      }
     }
   }
 

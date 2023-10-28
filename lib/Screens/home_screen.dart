@@ -63,21 +63,26 @@ class _HomeScreenState extends State<HomeScreen> {
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ImageUpload(
-                                    userId: loggedInUser.uid,
-                                  )));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ImageUpload(
+                            userId: loggedInUser.uid,
+                          ),
+                        ),
+                      );
                     },
-                    child: Text(
-                      "Upload Image",
-                      style: GoogleFonts.getFont('Sen',
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(Colors.deepPurple[200]),
+                      textStyle: MaterialStateProperty.all(
+                        TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black),
+                          color: Colors.black,
+                        ),
+                      ),
                     ),
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.deepPurple[200]),
+                    child: Text("Upload Image"),
                   ),
                   ElevatedButton(
                     style: ButtonStyle(
