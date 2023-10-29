@@ -55,97 +55,110 @@ class _ImageUploadState extends State<ImageUpload> {
         title: Text(
           "Upload Image",
           style: GoogleFonts.getFont('Sen',
-              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
         ),
-        backgroundColor: Colors.deepPurple[200],
-        foregroundColor: Colors.black,
+        backgroundColor: Colors.indigo,
+        foregroundColor: Colors.white,
       ),
       body: Center(
         child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: ClipRRect(
-                borderRadius: BorderRadius.circular(30),
-                child: SizedBox(
-                    height: 500,
-                    width: double.infinity,
-                    child: Column(children: [
-                      Text("Upload Image",
-                          style: GoogleFonts.getFont('Sen',
-                              fontSize: 15,
-                              fontWeight: FontWeight.normal,
-                              color: Colors.black)),
-                      const SizedBox(
-                        height: 10,
+          padding: const EdgeInsets.all(8),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(30),
+            child: SizedBox(
+              height: 500,
+              width: double.infinity,
+              child: Column(
+                children: [
+                  Text(
+                    "Upload Image",
+                    style: GoogleFonts.getFont('Sen',
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Expanded(
+                    flex: 4,
+                    child: Container(
+                      width: 300,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: Colors.indigo),
                       ),
-                      Expanded(
-                        flex: 4,
-                        child: Container(
-                          width: 300,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(color: Colors.purple),
-                          ),
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                    child: _image == null
-                                        ? Center(
-                                            child: Text("No image selected",
-                                                style: GoogleFonts.getFont(
-                                                    'Sen',
-                                                    fontSize: 15,
-                                                    fontWeight:
-                                                        FontWeight.normal)))
-                                        : Image.file(_image!)),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    imagePickerMethod();
-                                  },
-                                  child: Text(
-                                    "Select Image",
-                                    style: GoogleFonts.getFont(
-                                      'Sen',
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                        Colors.deepPurple[200]),
-                                  ),
-                                ),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    if (_image != null) {
-                                      uploadImage(_image!);
-                                    } else {
-                                      showSnackBar("Select Image first",
-                                          const Duration(seconds: 5));
-                                    }
-                                  },
-                                  child: Text(
-                                    "Upload Image",
-                                    style: GoogleFonts.getFont(
-                                      'Sen',
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                        Colors.deepPurple[200]),
-                                  ),
-                                ),
-                              ],
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: _image == null
+                                  ? Center(
+                                      child: Text("No image selected",
+                                          style: GoogleFonts.getFont('Sen',
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.normal)))
+                                  : Image.file(_image!),
                             ),
-                          ),
+                            const SizedBox(height: 10),
+                            Container(
+                              margin: const EdgeInsets.symmetric(vertical: 10),
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  imagePickerMethod();
+                                },
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all(Colors.indigo),
+                                ),
+                                child: Text(
+                                  "Select Image",
+                                  style: GoogleFonts.getFont(
+                                    'Sen',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(bottom: 10),
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  if (_image != null) {
+                                    uploadImage(_image!);
+                                  } else {
+                                    showSnackBar("Select Image first",
+                                        const Duration(seconds: 5));
+                                  }
+                                },
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all(Colors.indigo),
+                                ),
+                                child: Text(
+                                  "Upload Image",
+                                  style: GoogleFonts.getFont(
+                                    'Sen',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                      )
-                    ])))),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

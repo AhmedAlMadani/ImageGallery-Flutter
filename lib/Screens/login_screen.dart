@@ -85,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final loginButton = Material(
         elevation: 5,
         borderRadius: BorderRadius.circular(30),
-        color: Colors.deepPurple[200],
+        color: Colors.indigo,
         child: MaterialButton(
             padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
             minWidth: MediaQuery.of(context).size.width,
@@ -100,11 +100,11 @@ class _LoginScreenState extends State<LoginScreen> {
               style: GoogleFonts.getFont('Sen',
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black),
+                  color: Colors.white),
             )));
 
     return Scaffold(
-      backgroundColor: Colors.deepPurple[200],
+      backgroundColor: Colors.indigo,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -116,7 +116,9 @@ class _LoginScreenState extends State<LoginScreen> {
               Text(
                 'Gallery',
                 style: GoogleFonts.getFont('Sen',
-                    fontSize: 25, fontWeight: FontWeight.bold),
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(
@@ -170,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     style: GoogleFonts.getFont('Sen',
                                         fontSize: 15,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.deepPurple[400]),
+                                        color: Colors.indigoAccent),
                                   ),
                                 )
                               ])

@@ -38,29 +38,31 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: _appBar(),
       backgroundColor: Colors.white,
       body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 100, horizontal: 130),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Text("Welcome",
-                      style: GoogleFonts.getFont('Sen',
-                          fontSize: 20, fontWeight: FontWeight.bold)),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Text("${loggedInUser.firstName} ${loggedInUser.secondName}",
-                      style: GoogleFonts.getFont('Sen',
-                          fontSize: 15, fontWeight: FontWeight.normal)),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  ElevatedButton(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 130),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  "Welcome",
+                  style: GoogleFonts.getFont('Sen',
+                      fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  "${loggedInUser.firstName} ${loggedInUser.secondName}",
+                  style: GoogleFonts.getFont('Sen',
+                      fontSize: 15, fontWeight: FontWeight.normal),
+                ),
+                const SizedBox(height: 15),
+                Container(
+                  margin: const EdgeInsets.only(
+                      top: 15), // Adjust the top margin as needed
+                  child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -72,8 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     },
                     style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.deepPurple[200]),
+                      backgroundColor: MaterialStateProperty.all(Colors.indigo),
                       textStyle: MaterialStateProperty.all(
                         TextStyle(
                           fontSize: 14,
@@ -82,30 +83,47 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
-                    child: Text("Upload Image"),
+                    child: Text(
+                      "Upload Image",
+                      style: GoogleFonts.getFont('Sen',
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
                   ),
-                  ElevatedButton(
+                ),
+                Container(
+                  margin: const EdgeInsets.only(
+                      top: 15), // Adjust the top margin as needed
+                  child: ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.deepPurple[200]),
+                      backgroundColor: MaterialStateProperty.all(Colors.indigo),
                     ),
                     onPressed: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  ImageRetrive(userId: loggedInUser.uid)));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              ImageRetrive(userId: loggedInUser.uid),
+                        ),
+                      );
                     },
-                    child: Text("Show Uploads",
-                        style: GoogleFonts.getFont('Sen',
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black)),
+                    child: Text(
+                      "Show Uploads",
+                      style: GoogleFonts.getFont(
+                        'Sen',
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ]),
+          ),
+        ],
+      ),
     );
   }
 
@@ -117,12 +135,12 @@ class _HomeScreenState extends State<HomeScreen> {
             title: Text("Profile",
                 style: GoogleFonts.getFont(
                   'Sen',
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 )),
-            backgroundColor: Colors.deepPurple[200],
-            foregroundColor: Colors.black,
+            backgroundColor: Colors.indigo,
+            foregroundColor: Colors.white,
             actions: [
               IconButton(
                   onPressed: () {
@@ -130,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   icon: const Icon(
                     Icons.logout,
-                    color: Colors.black,
+                    color: Colors.white,
                   )),
             ]));
   }

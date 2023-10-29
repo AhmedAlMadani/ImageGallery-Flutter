@@ -20,8 +20,8 @@ class _ImageRetriveState extends State<ImageRetrive> {
           style: GoogleFonts.getFont('Sen',
               fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.deepPurple[200],
-        foregroundColor: Colors.black,
+        backgroundColor: Colors.indigo,
+        foregroundColor: Colors.white,
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance

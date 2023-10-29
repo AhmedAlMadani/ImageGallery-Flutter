@@ -161,7 +161,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     final signUpButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(30),
-      color: Colors.deepPurple[200],
+      color: Colors.indigo,
       child: MaterialButton(
           padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           minWidth: MediaQuery.of(context).size.width,
@@ -173,21 +173,21 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           child: Text(
             "SignUp",
             style: GoogleFonts.getFont('Sen',
-                fontSize: 20, fontWeight: FontWeight.bold),
+                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
           )),
     );
 
     return Scaffold(
       backgroundColor: Colors.white70,
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple[200],
+        backgroundColor: Colors.indigo,
         title: Text(
           'Registration',
           style: GoogleFonts.getFont('Sen',
-              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
         ),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
             Navigator.of(context).pop();
           },
